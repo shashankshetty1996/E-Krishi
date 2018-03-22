@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>E-KRISHI</title>
+
+  <!-- Materialize CSS -->
+  <link rel="stylesheet" href="css/materialize.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  
+  <!--Import Google Icon Font-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" rel="stylesheet">
+</head>
+<body>
+  <!-- Main Navigation Bar -->
+  <div class="navbar-fixed">
+    <nav class="teal darken-2">
+      <div class="container">
+        <a href="#home" class="brand-logo">E-KRISHI</a>
+        <a href="#" data-activates="mobile-demo" class="button-collapse">
+          <i class="material-icons">menu</i>
+        </a>
+        <ul class="right hide-on-med-and-down">
+          <li><a class="nav-item" href="#home">Home</a></li>
+          <li><a class="nav-item" href="#about">About</a></li>
+          <li><a class="nav-item" href="#contact">Contact</a></li>
+          <li><a href="#login-modal" class="nav-item modal-trigger">Login</a></li>
+          <li><a href="#register-modal" class="nav-item modal-trigger">Register</a></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <!-- Side Navigation Bar -->
+  <ul class="side-nav" id="mobile-demo">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>          
+  </ul>
+
+  <!-- Home Section -->
+  <section id="home" class="section scrollspy text-white red">
+    <h1 class="center-align">Home Section</h1>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="section scrollspy text-white green">
+    <h1 class="center-align">About Section</h1>
+  </section>
+
+  <!-- Contact Us -->
+  <section id="contact" class="section scrollspy text-white blue">
+    <h1 class="center-align">Contact Us</h1>
+  </section>
+
+  <div id="login-modal" class="modal">
+    <div class="row">
+      <div class="col s12">
+        <form name="login">
+          <div class="modal-content">
+            <h4>Login Here</h4>
+            <div class="row">
+              <div class="input-field">
+                <i class="material-icons prefix">account_circle</i>
+                <input type="text" class="validate" id="login-username">
+                <label for="login-username">Enter your username here</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field">
+                <i class="material-icons prefix">account_circle</i>            
+                <input type="text" class="validate" id="login-password">
+                <label for="login-password">Enter your Password here</label>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="submit" value="Submit" class="btn waves-effect waves-light">
+            <button class="modal-action modal-close waves-effect waves-light btn-flat grey">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div id="register-modal" class="modal">
+    <div class="row">
+      <div class="col s12">
+        <form name="register">
+          <div class="modal-content">
+            <h4>Register Here</h4>
+            <p>A bunch of text</p>
+          </div>
+          <div class="modal-footer">
+            <input type="submit" value="Submit" class="btn waves-effect waves-light">            
+            <button class="modal-action modal-close waves-effect waves-light btn-flat grey">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- JQuery ===== Materialize Dependance -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Materialize Js -->
+  <script src="js/materialize.min.js"></script>
+  <!-- Materialize Js Components initializer -->
+  <script src="js/initializer.js"></script>
+  <!-- Scroll Reveal  -->
+  <script src="js/scrollreveal.min.js"></script>
+  <!-- Custom Animation Event Trigger -->
+  <script src="js/scroll.js"></script>
+</body>
+</html>

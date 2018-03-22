@@ -1,3 +1,18 @@
-.section {
-  min-height: 75vh;
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+#login {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+#login-page {
+  width: 350px;
+  margin: auto;
 }

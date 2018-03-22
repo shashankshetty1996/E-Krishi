@@ -6,6 +6,7 @@ const ejs = require('ejs');
 
 // Router File
 let index = require('./route/index');
+let users = require('./route/users');
 
 // Define port
 let port = 3000;
@@ -26,6 +27,7 @@ app.use("/", express.static(path.join(__dirname, "public")));
 
 // Including router to app
 app.use('/', index);
+app.use('/users', users);
 
 // Server config
 app.listen(port, () => console.log(`server started on port ${port}`));

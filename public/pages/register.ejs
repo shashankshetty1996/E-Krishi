@@ -1,3 +1,72 @@
-<div class="container">
-  <h1>{{ msg }}</h1>
-</div>
+<section id="register" class="valign-wrapper">
+  <div class="container">
+    <div class="row" id="register-page">
+      <div class="card">
+        <div class="col s12 z-depth-4 card-panel">
+          <form id="register-form" name="register" ng-submit="registerSubmit()">
+            <div class="row">
+              <div class="input-field col s12 center-block">
+                <h4 class="center login-form-text">E-Krishi</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input type="text" class="validate" name="username" ng-model="username" ng-blur="checkUsername()" required>
+                <label for="username" data-error="Invalid Field" data-success="Valid username">Enter Username <span>*</span></label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="text" class="validate" name="name" ng-model="name" required>
+                <label for="name" data-error="Invalid Field">Enter your Name <span>*</span></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input type="text" class="validate" name="phone" ng-model="phone" required>
+                <label for="phone" data-error="Invalid Field">Enter your Phone Number <span>*</span></label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="email" class="validate" name="email" ng-model="email">
+                <label for="email" data-error="Invalid Field">Enter your Email ID here</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 m6">
+                <input type="password" class="validate" name="password" ng-model="password" required>
+                <label for="Password" data-error="Invalid Field">Enter your Password here <span>*</span></label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="password" class="validate" name="cpassword" ng-model="cpassword" ng-blur="checkPassword()" required>
+                <label for="Password" data-error="Invalid Field">Confirm your Password here <span>*</span></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <select class="validate" ng-model="type" ng-options="x.type for x in typeList">
+                  <option value="" disabled selected>Choose your Type</option>
+                </select>
+                <label data-error="Invalid Field">Select Your Type</label>
+              </div>
+            </div>
+            <br>
+            <div class="row">
+              <div class="input-field col s12">
+                <input type="submit" class="btn waves-effect waves-light col s12" value="Log In">
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s12 center-align">
+                <p class="medium-small"><a href="#!login">I Already have an Account</a></p>
+              </div>         
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).ready(function() {
+    $('select').material_select();
+  });
+</script>

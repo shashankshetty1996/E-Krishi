@@ -5,10 +5,18 @@ let router = express.Router();
 
 // Models
 const User = require('../model/User');
+const Type = require('../model/Type');
 
 // Create User
-router.get('/create', (req, res) => {
+router.post('/create', (req, res) => {
     let body = req.body;
+    console.log(body);
+    User.createUser(body, (err, result) => {
+        if(err) {
+            res.sendStatus(403);
+        }
+        res.send("inserted");
+    });
 });
 
 // auth call from the user
@@ -45,6 +53,32 @@ router.post('/', (req, res) => {
         });
     }
 });
+
+// types of users
+router.get('/types', (req, res) => {
+    Type.getAll((err, result) => {
+        if(err) {
+            res.sendStatus(403);
+        }
+        res.json(result);
+    });
+});
+
+// Check the username
+router.get('/:username', (req, res) => {
+    let username = req.params.username;
+
+    User.getUsername(username, (err, result) => {
+        if(err) {
+            res.sendStatus(403);
+        } else if(result.length === 0) {
+            res.send(`username not found`);
+        } else {
+            res.send(result[0].name);
+        }
+    });
+});
+
 
 function verifyToken(req, res, next) {
     // Get auth header value

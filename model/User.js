@@ -9,7 +9,6 @@ module.exports.createUser = (body, callback) => {
     sql = `INSERT INTO user (name, phone, email, username, password, type) VALUES (${mysql.escape(body.name)}, ${mysql.escape(body.phone)}, ${mysql.escape(body.email)}, ${mysql.escape(body.username)}, ${mysql.escape(body.password)}, ${body.type})`;  
     // sql = "INSERT INTO user (name, phone, email, username, password, type) VALUES (" + mysql.escape(body.name) + "," + mysql.escape(body.phone) +","+ mysql.escape(body.email) + "," + mysql.escape(body.username) + "," + mysql.escape(body.password) + "," + body.type + ")";
   }
-  console.log("sql query is " + sql);
   try {
     global.con.query(sql, callback);
   } catch (error) {

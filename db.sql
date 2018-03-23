@@ -1,3 +1,8 @@
+DROP DATABASE IF EXISTS `ekrishi`;
+CREATE DATABASE `ekrishi`;
+
+USE `ekrishi`;
+
 DROP TABLE IF EXISTS `forum`;
 CREATE TABLE `forum` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -29,7 +34,7 @@ DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(255),
-  `phone` int(11),
+  `phone` varchar(255),
   `email` varchar(255) DEFAULT 'dummy@gmail.com',
   `username` varchar(255),
   `password` varchar(255),
@@ -41,4 +46,4 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 INSERT INTO `user` (`id`, `name`, `phone`, `email`, `username`, `password`, `type`) VALUES
-(1,	'Shashank S Shetty',	2147483647,	'shashankshetty1996@gmail.com',	'shashankshetty1996',	'1234',	3);
+(1,	'Shashank S Shetty',	9481752839,	'shashankshetty1996@gmail.com',	'shashankshetty1996',	'1234',	3);

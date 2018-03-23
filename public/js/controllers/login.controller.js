@@ -24,6 +24,9 @@ function loginController($scope, $location, AuthenticationService) {
       if(response.success) {
         $scope.clearField();
         $location.path('/');
+      } else {
+        let toastContent = '<span class="flow-text">Invaild Credentials</span>';  
+        Materialize.toast(toastContent, 3000);
       }
     });
   }

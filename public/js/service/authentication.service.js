@@ -44,7 +44,7 @@
                 .then( function(user) {                    
                     if(user !== null && user.username === username) {
                         response = { success : true };             
-                        SetCredentialToken(user.username, user.token);
+                        SetCredentialToken(user.username,user.type, user.token);
                     } else {
                         response = { success: false, message: 'Username or password is incorrect' };
                     }
@@ -53,10 +53,11 @@
 
         }
 
-        function SetCredentialToken(username, token) {
+        function SetCredentialToken(username, type, token) {
             $rootScope.globals = {
                 currentUser: {
                     username: username,
+                    type: type,
                     token: token
                 }
             };
@@ -72,7 +73,7 @@
             $rootScope.globals = {};
             // $cookies.remove('globals');
             localStorage.removeItem('globals');
-            $http.defaults.headers.common.Authorization = 'Bearer';
+            $http.defaults.headers.common.Authorization = '';
         }
     }
 

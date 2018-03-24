@@ -36,3 +36,23 @@
 #forum p {
   text-align: justify;
 }
+
+.messages-block {
+  padding: 1em 1.5em; 
+  background-color: rgba(200, 200, 200, 0.2);
+  overflow-y: scroll;
+  height: 60vh;
+  max-height: 60vh; 
+  text-align: justify;
+}
+
+.messages-block ul li {
+  margin: 1em auto;
+}
+
+.messages-block .message-content {
+  text-indent: 2em;
+  display: block;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 18px;
+}

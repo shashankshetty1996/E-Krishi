@@ -7,6 +7,9 @@ $(document).ready(function() {
     closeOnClick: true
   });
 
+  // Character Count
+  $('#forum_msg').characterCounter();
+
   // Home slider
   $(".slider").slider();
 
@@ -18,6 +21,7 @@ $(document).ready(function() {
 
   // Material Box
   $('.materialboxed').materialbox();
+
 
   // Custom active classes for navbar
   $('ul.menu li').click(function(){

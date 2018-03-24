@@ -21,14 +21,26 @@
       <div class="container">
         <!-- Chat System -->
         <h3>{{ info }}</h3>
-        <div class="messages"></div>
-        <form name="message">
-          <div class="row">
+        <div class="messages-block">
+          <ul>
+            <li ng-repeat="x in channelMessage">
+              <!-- right-alignment for own user message -->
+              <div ng-class="{'right-align' : x.username === username}">
+                <span class="chip">{{ x.username }} <br> {{ x.time }}</span>
+                <span class="message-content">{{ x.message }}</span>
+              </div>
+            </li>            
+          </ul>
+        </div>
+        <form name="message" ng-submit="addMessage()">
+          <div class="row valign-wrapper">
             <div class="input-field col s11">
-              <input type="text" name="msg" ng-model="msg" placeholder="Enter your message here" required>
+              <input type="text" class="validate" name="msg" id="forum_msg" ng-model="msg" placeholder="Enter your message here" data-length="250" required>
             </div>
             <div class="input-field col s1">
-              <input type="submit" value=""><i class="material-icons">send</i>
+              <button type="submit" class="btn waves-effect waves-light">
+                <i class="material-icons">send</i>
+              </button>
             </div>
           </div>
         </form>

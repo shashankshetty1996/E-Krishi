@@ -1,0 +1,38 @@
+<section id="channel">
+  <div class="row">
+    <div class="col l2 m12 s12 no-padding">
+      <ul id="slide-out" class="side-nav fixed teal darken-2">
+        <li ng-repeat="channel in channels">
+          <a ng-href="{{ channel.link }}" class="white-text"># {{ channel.name }}</a>
+        </li>
+      </ul>
+
+      <div class="navbar-fixed hide-on-large-only">
+        <nav class="teal darken-1" id="forum-channel">
+          <ul class="center-align">
+            <li ng-repeat="channel in channels">
+              <a ng-href="{{ channel.link }}"># {{ channel.name }}</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+    <div class="col l10 m12 s12 no-padding">
+      <div class="container">
+        <!-- Chat System -->
+        <h3>{{ info }}</h3>
+        <div class="messages"></div>
+        <form name="message">
+          <div class="row">
+            <div class="input-field col s11">
+              <input type="text" name="msg" ng-model="msg" placeholder="Enter your message here" required>
+            </div>
+            <div class="input-field col s1">
+              <input type="submit" value=""><i class="material-icons">send</i>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

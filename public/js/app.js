@@ -18,6 +18,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'pages/forum.ejs',
       controller: 'forumController'
     })
+    .when('/forum/:channel', {
+      templateUrl: 'pages/channel.ejs',
+      controller: 'channelController'
+    })
     .otherwise({
       redirectTo: '/'
     });

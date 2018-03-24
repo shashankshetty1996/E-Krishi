@@ -29,4 +29,9 @@ $(document).ready(function() {
     $('ul.menu li').removeClass("active");
     $('ul.menu li:first-child').addClass("active");
   });
+  // logout
+  $('ul.menu li:last-child').click(function(){
+    $('li').removeClass("active");
+    $('ul.menu li:first-child').addClass("active");    
+  });
 });

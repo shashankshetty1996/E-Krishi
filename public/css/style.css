@@ -16,3 +16,23 @@
   width: 350px;
   margin: auto;
 }
+
+#forum .side-nav, #channel .side-nav {
+  margin-top: 10vh;
+  z-index: 1;
+}
+
+#forum .button-collapse, #channel .button-collapse {
+  margin-top: 10vh;
+  z-index: 0;
+}
+
+#forum h3 {
+  text-transform: capitalize;
+  text-align: center;
+  margin: 50px auto;
+}
+
+#forum p {
+  text-align: justify;
+}

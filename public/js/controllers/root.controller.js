@@ -32,4 +32,12 @@ function rootController($scope, $rootScope, $interval) {
   function getType() {
     return $scope.type;
   }
+
+
+  // channels
+  $scope.channels = [
+    { name: "Market", type: "", link: "#!forum/market", isHeading: true },
+    { name: "Weather", type: "", link: "#!forum/weather", isHeading: true },
+    { name: "Crop Cultivation", type: "", link: "#!forum/crop", isHeading: true }
+  ];
 }

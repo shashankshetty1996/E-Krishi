@@ -18,4 +18,15 @@ $(document).ready(function() {
 
   // Material Box
   $('.materialboxed').materialbox();
+
+  // Custom active classes for navbar
+  $('ul.menu li').click(function(){
+    $('li').removeClass("active");
+    $(this).addClass("active");
+  });
+  // fixed brand logo active class bug
+  $('.brand-logo').click(function(){
+    $('ul.menu li').removeClass("active");
+    $('ul.menu li:first-child').addClass("active");
+  });
 });

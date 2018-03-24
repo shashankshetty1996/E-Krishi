@@ -33,16 +33,21 @@
   <script src="js/app.js"></script>
 
   <!-- Angular Controller -->
+  <script src="js/controllers/root.controller.js"></script>
   <script src="js/controllers/home.controller.js"></script>
   <script src="js/controllers/login.controller.js"></script>
   <script src="js/controllers/register.controller.js"></script>
+  <script src="js/controllers/forum.controller.js"></script>
 
   <!-- Angular Service -->
   <script src="js/service/authentication.service.js"></script>
   <script src="js/service/user.service.js"></script>
   <script src="js/service/type.service.js"></script>
 </head>
-<body>
+<body ng-controller="rootController">
+  <div ng-show="logStatus">
+    <% include includes/navbar.ejs %>  
+  </div>
   <ng-view></ng-view>
 </body>
 </html>

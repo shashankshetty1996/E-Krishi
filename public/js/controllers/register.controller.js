@@ -51,12 +51,6 @@ function registerController($scope, $location, AuthenticationService, UserServic
       return     
     }
 
-    // confirm password field is empty    
-    if(cpass === undefined) {
-      document.register.cpassword.focus();
-      return
-    }
-
     if(pass !== cpass) {
       // Alert Message
       let toastContent = `<span class="flow-text">Password miss matched</span>`;  

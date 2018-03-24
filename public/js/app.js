@@ -14,6 +14,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'pages/register.ejs',
       controller: 'registerController'
     })
+    .when('/forum', {
+      templateUrl: 'pages/forum.ejs',
+      controller: 'forumController'
+    })
     .otherwise({
       redirectTo: '/'
     });

@@ -55,7 +55,7 @@ function registerController($scope, $location, AuthenticationService, UserServic
       // Alert Message
       let toastContent = `<span class="flow-text">Password miss matched</span>`;  
       Materialize.toast(toastContent, 5000);
-      document.register.cpassword.focus();      
+      document.register.password.classList.add("invalid");
       document.register.cpassword.classList.add("invalid");
     }
   }
@@ -68,7 +68,12 @@ function registerController($scope, $location, AuthenticationService, UserServic
     let email = $scope.email;
     let username = $scope.username;
     let password = $scope.password;
+    let cpassword = $scope.cpassword;
     let type = $scope.type.id;
+
+    if(password !== cpassword) {
+      document.register.password.focus();      
+    }
 
     // user object
     let data = {

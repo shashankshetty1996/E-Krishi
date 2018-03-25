@@ -6,6 +6,7 @@ channelController.$inject = ['$scope', '$rootScope', '$interval', '$routeParams'
 function channelController($scope, $rootScope, $interval, $routeParams, ForumService) {
   let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   let channel = $routeParams.channel;
+  let promise; // for interval
   
   // used for identifing the channel
   $scope.info = "Welcome from "+channel;
@@ -36,12 +37,17 @@ function channelController($scope, $rootScope, $interval, $routeParams, ForumSer
   ];
 
   // Update the channel chat
-  $interval(function() {
+  promise = $interval(function() {
     ForumService.GetAllByChannel(channel)
     .then(function(messages) {
         $scope.channelMessage = messages;
       });
   }, 1000);
+
+  // to stop the interval when changed the route i.e interval will be keep running
+  $scope.$on('$destroy', function() {
+    $interval.cancel(promise);
+  });
 
   // Add Message
   $scope.addMessage = function() {

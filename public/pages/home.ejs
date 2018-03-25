@@ -1,5 +1,36 @@
 <section id="home">
-  <div class="container">
-    <h1>{{msg}}</h1>
+  <div class="banner">
+    <div class="banner-inner">
+      <div class="container">
+        <h1>{{msg}}</h1>
+      </div>
+      <a href="#home-intro" class="btn-floating btn-large waves-effect waves-light transparent">
+        <i class="fas fa-angle-double-down"></i>
+      </a>
+    </div>
   </div>
+  <section id="home-intro" class="section scrollspy teal darken-2 white-text">
+    <div class="container">
+      <p class="flow-text">We inspire the people for there growth and we grow with them!</p>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="team" class="section">
+    <div class="row">
+      <div class="col s12 m6 l3 card" ng-repeat="member in teamMember">
+        <div class="card-image activator grey-text text-darken-4">
+          <img src="img/default.png" height="350">
+        </div>
+        <div class="card-content">
+          <span class="card-title activator grey-text text-darken-4">{{ member.name }}<i class="material-icons right">more_vert</i></span>
+          <p>{{ member.intro }}</p>
+        </div>
+        <div class="card-reveal">
+          <span class="card-title grey-text text-darken-4">{{ member.name }}<i class="material-icons right">close</i></span>
+          <p>{{ member.description }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
 </section>

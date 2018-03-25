@@ -6,7 +6,7 @@
 
 #google_translate_element {
   position: fixed;
-  top: 12%;
+  top: 75px;
   right: 15%;
   z-index: 999;
 }
@@ -62,4 +62,26 @@
   display: block;
   font-family: 'Times New Roman', Times, serif;
   font-size: 18px;
+}
+
+.banner .banner-inner {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fdfdfd;
+}
+
+#home .banner {
+  position: relative;
+  height: 90vh;
+  width: 100vw;
+  background-image: url('../img/home-banner.jpeg');
+  background-position: bottom;
+}
+
+#home .banner .banner-inner .btn-floating {
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
 }

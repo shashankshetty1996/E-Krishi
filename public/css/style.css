@@ -4,6 +4,13 @@
   border: 0;
 }
 
+#google_translate_element {
+  position: fixed;
+  top: 12%;
+  right: 15%;
+  z-index: 999;
+}
+
 #login, #register {
   min-width: 100vw;
   min-height: 100vh;
@@ -18,7 +25,7 @@
 }
 
 #forum .side-nav, #channel .side-nav {
-  margin-top: 10vh;
+  margin-top: 5%;
   z-index: 1;
 }
 

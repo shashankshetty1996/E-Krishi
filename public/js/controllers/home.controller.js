@@ -32,4 +32,18 @@ function homeController($scope) {
       description: 'I wanted to make this application, which will be done '
     }
   ];
+
+
+  // IoT Section
+  $scope.connected = true;
+
+  $scope.result = [
+    { type: 'Temperature', val: 0, image: 'img/thermometer.png' },
+    { type: 'Moisture of soil', val: 0, image: 'img/moisture.png' },
+    { type: 'Humidity', val: 0, image: 'img/humidity.png' },
+    { type: 'Oxygen', val: 0, image: 'img/oxygen.png' },
+    { type: 'Nitrogen', val: 0, image: 'img/nitrogen.png' },
+    { type: 'Sunlight intensity', val: 0, image: 'img/intensity.png' },
+    { type: 'Toxicity level of atmosphere', val: 0, image: 'img/toxicity.png' }
+  ]
 }

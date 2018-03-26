@@ -10,11 +10,11 @@ function homeController($scope) {
     {
       name: 'Shashank S Shetty',
       image: 'img/default.jpg',
-      info: 'Front End Designed',
+      info: 'Lead Dev',
       description: 'I wanted to make this application, which will be done '
     },
     {
-      name: 'Spandhana ND',
+      name: 'Spandana ND',
       image: 'img/default.jpg',
       info: 'Documation Head',
       description: 'I wanted to make this application, which will be done '
@@ -26,7 +26,7 @@ function homeController($scope) {
       description: 'I wanted to make this application, which will be done '
     },
     {
-      name: 'Noushand',
+      name: 'Naushad',
       image: 'img/default.jpg',
       info: 'Lead Researcher',
       description: 'I wanted to make this application, which will be done '
@@ -37,6 +37,7 @@ function homeController($scope) {
   // IoT Section
   $scope.connected = true;
 
+  // result init
   $scope.result = [
     { type: 'Temperature', val: 0, image: 'img/thermometer.png' },
     { type: 'Moisture of soil', val: 0, image: 'img/moisture.png' },

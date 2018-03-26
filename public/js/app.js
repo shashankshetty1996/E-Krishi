@@ -14,6 +14,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'pages/register.ejs',
       controller: 'registerController'
     })
+    .when('/news', {
+      templateUrl: 'pages/news.ejs',
+      controller: 'newsController'
+    })
     .when('/forum', {
       templateUrl: 'pages/forum.ejs',
       controller: 'forumController'

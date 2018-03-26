@@ -43,7 +43,7 @@ function forumController($scope) {
     },
     {
       id: 10,
-      rule: "Be respectful of the staff and fellow users."
+      rule: "Be respectful of professionals and fellow users."
     }
   ];  
 }

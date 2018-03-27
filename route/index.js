@@ -1,6 +1,8 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const weather = require('weather-js');
+const NewsAPI = require('newsapi');
+const newsapi = new NewsAPI('16c103b7c34a4c0aa1ff3cbd0753fab6');
 
 let Forum = require('../model/Forum');
 
@@ -58,6 +60,27 @@ router.get('/weather/:zipcode', verifyToken, (req, res) => {
         res.json({current,forecast});
       } else {
         res.json([]);
+      }
+    });
+  });
+});
+
+// Fetch from NEWS API
+router.get('/news', verifyToken, (req, res) => {
+  jwt.verify(req.token, 'shashank', (err,AuthData) => {
+    if(err) {
+      res.sendStatus(403);
+    }
+    newsapi.v2.everything({
+      sources: 'bbc-news,the-verge,google-news,the-hindu,the-times-of-india',
+      q: 'crop,agriculture,weather'
+    }).then(response => {
+      // success full request
+      if(response.status === "ok") {
+        // All the articles send as result
+        res.json(response.articles);
+      } else {
+        res.sendStatus(403);
       }
     });
   });

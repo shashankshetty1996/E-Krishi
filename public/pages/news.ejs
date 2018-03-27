@@ -7,14 +7,17 @@
 
   <div class="container">
     <div class="row">
-      <div class="col s12 m6 my-2" ng-repeat="news in news" name="news{{ news.id }}">
+      <div class="col s12 m6 my-2 news-card" ng-repeat="news in news" name="news{{ news.id }}">
         <div class="card z-depth-4">
+          <div class="card-image">
+            <img ng-src="{{ news.urlToImage }}" height="200">
+          </div>
           <div class="card-content">
-            <h1>{{ news.title }}</h1>
-            <p class="justify-align">{{ news.content }}</p>
+            <h4>{{ news.title }}</h4>
+            <p class="justify-align">{{ news.description }}</p>
           </div>
           <div class="card-action">
-            <a ng-href="{{ news.link }}" class="right-align">read more</a>
+            <a ng-href="{{ news.url }}" class="right-align" target="_blank">read more</a>
           </div>
         </div>
       </div>

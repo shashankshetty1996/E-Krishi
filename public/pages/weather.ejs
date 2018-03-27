@@ -8,11 +8,19 @@
   <div class="container">    
     <h1 class="center-align">{{ msg }}</h1>
     <div class="row">
-      <div class="card col s12 p-2" ng-repeat="forecast in forecasts">
+      <div class="card col s12 p-2 teal darken-2 white-text" ng-repeat="forecast in forecasts">
+        <div class="card-title">
+          <h4 class="center">{{ forecast.day }} {{ forecast.date | reverse }} in {{ city }} {{ region_name }}, {{ country_name }}</h4>
+        </div>
         <div class="card-content">
-          <h5>date: {{ forecast.date }} and day is {{ forecast.day }}</h5>
-          <h5>Temp: High {{ forecast.high }} and Low {{ forecast.low }}</h5>
-          <h5>Type of day: {{ forecast.skytextday }}</h5>
+          <div class="row">
+            <div class="col s12 m6">
+              <p class="center-align flow-text"><strong>High Temperature : </strong> {{ forecast.high }} &deg;C <br /> <strong>Low Temperature : </strong> {{ forecast.low }} &deg;C</p>
+            </div>
+            <div class="col s12 m6">
+              <p class="center-align flow-text"><strong>Type of Day:</strong> {{ forecast.skytextday }}</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

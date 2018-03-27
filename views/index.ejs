@@ -62,10 +62,18 @@
   <div ng-show="logStatus">
     <% include includes/navbar.ejs %>  
     <div class="fixed-action-btn">
-      <a href="#!profile" class="btn-floating tooltipped btn-large teal darken-1" data-position="left" data-delay="50" data-tooltip="User Profile">
+      <a href="#!profile" id="menu" class="btn-floating tooltipped btn-large teal darken-1" data-position="left" data-delay="50" data-tooltip="User Profile">
         <i class="large material-icons">perm_identity</i>
       </a>
     </div>
+
+    <!-- Tap Target Structure -->
+  <div class="tap-target" data-activates="menu">
+    <div class="tap-target-content">
+      <h5>User Profile</h5>
+      <p>A bunch of text</p>
+    </div>
+  </div>
   </div>
   <div class="container right-align">
     <div id="google_translate_element"></div>

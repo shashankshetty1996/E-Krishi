@@ -18,9 +18,9 @@ app.config(function ($routeProvider) {
       templateUrl: 'pages/news.ejs',
       controller: 'newsController'
     })
-    .when('/news/:id', {
-      templateUrl: 'pages/newsDetails.ejs',
-      controller: 'newsDetailsController'
+    .when('/profile', {
+      templateUrl: 'pages/profile.ejs',
+      controller: 'profileController'
     })
     .when('/weather', {
       templateUrl: 'pages/weather.ejs',

@@ -41,7 +41,7 @@
   <script src="js/controllers/channel.controller.js"></script>
   <script src="js/controllers/weather.controller.js"></script>
   <script src="js/controllers/news.controller.js"></script>
-  <script src="js/controllers/newsDetails.controller.js"></script>
+  <script src="js/controllers/profile.controller.js"></script>
 
   <!-- Angular Service -->
   <script src="js/service/authentication.service.js"></script>
@@ -61,6 +61,11 @@
 <body ng-controller="rootController">
   <div ng-show="logStatus">
     <% include includes/navbar.ejs %>  
+    <div class="fixed-action-btn">
+      <a href="#!profile" class="btn-floating tooltipped btn-large teal darken-1" data-position="left" data-delay="50" data-tooltip="User Profile">
+        <i class="large material-icons">perm_identity</i>
+      </a>
+    </div>
   </div>
   <div class="container right-align">
     <div id="google_translate_element"></div>

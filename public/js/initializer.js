@@ -7,6 +7,9 @@ $(document).ready(function() {
     closeOnClick: true
   });
 
+  // tooltip
+  $('.tooltipped').tooltip();
+
   // Character Count
   $('#forum_msg').characterCounter();
 

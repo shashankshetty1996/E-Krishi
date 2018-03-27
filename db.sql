@@ -1,8 +1,6 @@
 DROP DATABASE IF EXISTS `ekrishi`;
 CREATE DATABASE `ekrishi`;
 
-USE `ekrishi`;
-
 DROP TABLE IF EXISTS `forum`;
 CREATE TABLE `forum` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

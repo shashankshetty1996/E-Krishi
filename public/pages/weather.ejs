@@ -1,0 +1,20 @@
+<section id="newsDetails">
+  <div class="preloader-wrapper" ng-show="preloader">
+    <h1 class="center-align">Loading</h1>
+    <div class="progress">
+      <div class="indeterminate"></div>
+    </div>
+  </div>
+  <div class="container">    
+    <h1 class="center-align">{{ msg }}</h1>
+    <div class="row">
+      <div class="card col s12 p-2" ng-repeat="forecast in forecasts">
+        <div class="card-content">
+          <h5>date: {{ forecast.date }} and day is {{ forecast.day }}</h5>
+          <h5>Temp: High {{ forecast.high }} and Low {{ forecast.low }}</h5>
+          <h5>Type of day: {{ forecast.skytextday }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

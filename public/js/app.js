@@ -18,6 +18,14 @@ app.config(function ($routeProvider) {
       templateUrl: 'pages/news.ejs',
       controller: 'newsController'
     })
+    .when('/news/:id', {
+      templateUrl: 'pages/newsDetails.ejs',
+      controller: 'newsDetailsController'
+    })
+    .when('/weather', {
+      templateUrl: 'pages/weather.ejs',
+      controller: 'weatherController'
+    })
     .when('/forum', {
       templateUrl: 'pages/forum.ejs',
       controller: 'forumController'

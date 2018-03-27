@@ -5,15 +5,17 @@
     </div>
   </div>
 
-  <div class="container p-2">
+  <div class="container">
     <div class="row">
-      <div class="card col s12 m6" ng-repeat="news in news" name="news{{ news.id }}">
-        <div class="card-content">
-          <h1>{{ news.title }}</h1>
-          <p class="p-2">{{ news.content }}</p>
-        </div>
-        <div class="card-action">
-          <a ng-href="{{ news.link }}" class="right-align">read more</a>
+      <div class="col s12 m6 my-2" ng-repeat="news in news" name="news{{ news.id }}">
+        <div class="card z-depth-4">
+          <div class="card-content">
+            <h1>{{ news.title }}</h1>
+            <p class="justify-align">{{ news.content }}</p>
+          </div>
+          <div class="card-action">
+            <a ng-href="{{ news.link }}" class="right-align">read more</a>
+          </div>
         </div>
       </div>
     </div>

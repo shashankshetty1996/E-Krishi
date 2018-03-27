@@ -1,5 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
+const weather = require('weather-js');
 
 let Forum = require('../model/Forum');
 
@@ -35,6 +36,29 @@ router.post('/channel/', verifyToken, (req, res) => {
         res.sendStatus(403);
       }
       res.send("message sent");      
+    });
+  });
+});
+
+router.get('/weather/:zipcode', verifyToken, (req, res) => {
+  jwt.verify(req.token, 'shashank', (err, AuthData) => {
+    if(err) {
+      res.sendStatus(403);
+    }
+    let zipcode = req.params.zipcode;
+    weather.find({search: zipcode, degreeType: 'C'}, function(err, result) {
+      if(err) {
+        res.sendStatus(403);
+      }
+      if(result.length !== 0) {
+        let current = result[0].current
+        let forecast = result[0].forecast;
+        
+        // result
+        res.json({current,forecast});
+      } else {
+        res.json([]);
+      }
     });
   });
 });

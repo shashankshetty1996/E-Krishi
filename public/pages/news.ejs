@@ -5,6 +5,14 @@
     </div>
   </div>
 
+  <!-- Pre Loader -->
+  <div class="preloader-wrapper" ng-show="preloader">
+    <h1 class="center-align">{{ loader }}</h1>
+    <div class="progress">
+      <div class="indeterminate"></div>
+    </div>
+  </div>
+
   <div class="container">
     <div class="row">
       <div class="col s12 m6 my-2 news-card" ng-repeat="news in news" name="news{{ news.id }}">

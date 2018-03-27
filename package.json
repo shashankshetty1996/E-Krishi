@@ -25,6 +25,7 @@
     "express": "^4.16.3",
     "jsonwebtoken": "^8.2.0",
     "mysql": "^2.15.0",
+    "newsapi": "^2.2.2",
     "weather-js": "^2.0.0"
   },
   "devDependencies": {

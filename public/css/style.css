@@ -132,3 +132,29 @@
   height: 100%;
   z-index: 999;
 }
+
+.news-card .card {
+  height: 550px;
+  margin: 20px auto;
+  overflow: hidden;
+}
+
+.news-card img {
+  height: 200px;
+}
+
+.news-card p {
+  word-wrap: break-word;
+}
+
+.news-card .card-action {
+  position: absolute;
+  width: 100%;
+  top: 490px;
+}
+
+@media(min-width: 600) {
+  .news-card img {
+    height: 600px;
+  }
+}

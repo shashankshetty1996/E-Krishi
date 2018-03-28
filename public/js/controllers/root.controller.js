@@ -36,8 +36,8 @@ function rootController($scope, $rootScope, $interval) {
 
   // channels
   $scope.channels = [
-    { name: "Market", type: "", link: "#!forum/market", isHeading: true },
-    { name: "Weather", type: "", link: "#!forum/weather", isHeading: true },
-    { name: "Crop Cultivation", type: "", link: "#!forum/crop", isHeading: true }
+    { name: "market", type: "", link: "#!forum/market", isHeading: true },
+    { name: "weather", type: "", link: "#!forum/weather", isHeading: true },
+    { name: "crop", type: "", link: "#!forum/crop", isHeading: true }
   ];
 }

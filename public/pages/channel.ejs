@@ -3,7 +3,7 @@
     <div class="col l2 m12 s12 no-padding">
       <ul id="slide-out" class="side-nav fixed teal darken-2">
         <li><h3 class="white-text center-align">Forum Channels</h3></li>        
-        <li ng-repeat="channel in channels">
+        <li ng-repeat="channel in channels" name="{{ channel.name }}" ng-class="{'active':'{{ channel.name }}' === '{{ currentChannel }}'}">
           <a ng-href="{{ channel.link }}" class="white-text"># {{ channel.name }}</a>
         </li>
       </ul>
@@ -11,7 +11,7 @@
       <div class="navbar-fixed hide-on-large-only">
         <nav class="teal darken-1" id="forum-channel">
           <ul class="center-align">
-            <li ng-repeat="channel in channels">
+            <li ng-repeat="channel in channels"  name="{{ channel.name }}" ng-class="{'active':'{{ channel.name }}' === '{{ currentChannel }}'}">
               <a ng-href="{{ channel.link }}"># {{ channel.name }}</a>
             </li>
           </ul>
@@ -21,7 +21,7 @@
     <div class="col l10 m12 s12 no-padding">
       <div class="container">
         <!-- Chat System -->
-        <h3>{{ info }}</h3>
+        <h3 class="teal-text darken-2">{{ info }}</h3>
         <div class="messages-block">
           <ul>
             <li ng-repeat="x in channelMessage">

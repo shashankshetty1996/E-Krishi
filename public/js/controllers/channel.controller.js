@@ -12,6 +12,8 @@ function channelController($scope, $rootScope, $location, $interval, $routeParam
   $scope.info = "Welcome from "+channel;
   // used for styling users messages
   $scope.username = $rootScope.globals.currentUser.username;
+  // channel name in scope
+  $scope.currentChannel = channel;
 
   // Update the channel chat
   promise = $interval(function() {
@@ -28,6 +30,7 @@ function channelController($scope, $rootScope, $location, $interval, $routeParam
 
   function validChannel() {
     let flag = true;
+    // $scope.channels from root controller
     angular.forEach($scope.channels, function(value) {
       if(channel === value.link.split('/')[1])
       {
@@ -47,16 +50,20 @@ function channelController($scope, $rootScope, $location, $interval, $routeParam
 
     let username = $scope.username;
 
+    // Char limit from database
     if(message.length > max_length) {
-      let toastContent = `<span class="flow-text">Maximum ${max_length} Character</span>`;  
+      let toastContent = `<span class="flow-text">Maximum ${max_length} Characters allowed</span>`;  
       Materialize.toast(toastContent, 5000);
       return
     }
 
     // if(channel)
 
+    // Get the timestamp
     let timenow = new Date();
     timenow = `${timenow.getDate()}-${timenow.getMonth()}-${timenow.getFullYear()} ${days[timenow.getDay()]}`;
+    
+    // Reset the msg box to empty 
     $scope.msg = "";
 
     // data object
@@ -67,6 +74,7 @@ function channelController($scope, $rootScope, $location, $interval, $routeParam
       time: timenow
     }
 
+    // Add Message to Database
     ForumService.AddMessage(data)
       .then(function(response) {
         let toastContent = `<span class="flow-text">${response}</span>`;  

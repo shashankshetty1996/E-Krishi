@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const mysql = require("mysql");
 const ejs = require("ejs");
+const cors = require("cors");
 
 // Router File
 let index = require("./route/index");
@@ -13,6 +14,9 @@ let port = 3000;
 
 // Define app
 let app = express();
+
+// using cross origin 
+app.use(cors());
 
 // Database Config
 function handle() {

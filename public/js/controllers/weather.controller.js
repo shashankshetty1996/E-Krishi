@@ -8,8 +8,8 @@ angular
     };
   });
 
-weatherController.$inject = ['$scope', '$timeout', 'WeatherService'];
-function weatherController($scope, $timeout , WeatherService) {
+weatherController.$inject = ['$scope', 'WeatherService'];
+function weatherController($scope, WeatherService) {
   $scope.msg = 'Weather Forecast';
   $scope.preloader = true;  
 
@@ -20,19 +20,18 @@ function weatherController($scope, $timeout , WeatherService) {
         $scope.zipcode = response.zip_code;
         $scope.city = response.city;
         $scope.region_name = response.region_name;
-        $scope.country_name = response.country_name
+        $scope.country_name = response.country_name;
+
+        // GetWeather
+        WeatherService.GetWeather($scope.zipcode)
+          .then(function(response) {
+            // To stop the pre loader
+            $scope.preloader = false;
+            console.log(response);
+
+            // To store the details
+            $scope.forecasts = response.forecast;
+          });
       } 
     });
-
-  $timeout(function() {
-    WeatherService.GetWeather($scope.zipcode)
-      .then(function(response) {
-        // To stop the pre loader
-        $scope.preloader = false;
-        console.log(response);
-
-        // To store the details
-        $scope.forecasts = response.forecast;
-      });
-  }, 3000);
 }

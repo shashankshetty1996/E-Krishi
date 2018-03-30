@@ -20,3 +20,25 @@ module.exports.AddPost = (data, callback) => {
     callback(result, error);
   }
 }
+
+module.exports.UpdatePost = (id, data, callback) => {
+  let sql = `UPDATE post SET username = ${mysql.escape(data.username)}, name = ${mysql.escape(data.name)}, description = ${mysql.escape(data.description)}, price = ${mysql.escape(data.price)} WHERE id = ${id}`;
+
+  try {
+    global.con.query(sql, callback);
+  } catch (error) {
+    let result = [];
+    callback(result, error);
+  }
+}
+
+module.exports.DeletePost = (id, callback) => {
+  let sql = `DELETE FROM post WHERE id = ${id}`;
+
+  try {
+    global.con.query(sql, callback);
+  } catch (error) {
+    let result = [];
+    callback(result, error);
+  }
+}

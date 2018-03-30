@@ -10,6 +10,8 @@
     service.GetByUsername = GetByUsername;
     service.GetPostByUsername = GetPostByUsername;
     service.AddPost = AddPost;
+    service.UpdatePost = UpdatePost;
+    service.DeletePost = DeletePost;
 
     return service;
 
@@ -23,6 +25,14 @@
 
     function AddPost(username, name, description, price) {
       return $http.post('/users/post/', {username: username, name : name, description : description, price : price}).then(handleSuccess, handleError('Error getting user by username'));
+    }
+
+    function UpdatePost(post) {
+      return $http.put('/users/post/' + post.id, post).then(handleSuccess, handleError('Error updating post'));
+    }
+
+    function DeletePost(id) {
+      return $http.delete('/users/post/' + id).then(handleSuccess, handleError('Error deleting post'));
     }
 
     // private functions

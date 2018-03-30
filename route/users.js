@@ -125,6 +125,47 @@ router.get('/post/:username', verifyToken, (req, res) => {
     });
 });
 
+// Update post
+router.put('/post/:id', verifyToken, (req, res) => {
+    jwt.verify(req.token, 'shashank', (err, AuthData) => {
+        if(err) {
+            res.sendStatus(403);
+        }
+        let id = req.params.id;        
+        let data = req.body;
+        Post.UpdatePost(id, data, (err, result) => {
+            if(err) {
+                res.sendStatus(403);
+            }
+            if(result.affectedRows === 0) {
+                res.send("invalid");
+            } else {
+                res.send(result);
+            }
+        });
+    });
+}); 
+
+// Delete Post
+router.delete('/post/:id', verifyToken, (req, res) => {
+    jwt.verify(req.token, 'shashank', (err, AuthData) => {
+        if(err) {
+            res.sendStatus(403);
+        }
+        let id = req.params.id;
+        Post.DeletePost(id, (err, result) => {
+            if(err) {
+                res.sendStatus(403);
+            }
+            if(result.affectedRows === 0) {
+                res.send("invalid");
+            } else {
+                res.send(result);
+            }
+        });
+    });
+});
+
 function verifyToken(req, res, next) {
     // Get auth header value
     const bearerHeader = req.headers['authorization'];    

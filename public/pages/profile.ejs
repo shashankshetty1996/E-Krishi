@@ -5,11 +5,12 @@
       <div class="card-stacked row">
         <div class="card-content col s12">
           <h3 class="teal-text darken-1">{{ msg }}</h3>
-          <table class="highlighted centered responsive-table">
+          <table class="highlighted responsive-table">
             <thead>
               <tr>
                 <th>Username</th>
                 <th>Name</th>
+                <th>Type</th>
                 <th>Phone</td>
                 <th>Email ID</t>
               </tr>
@@ -18,6 +19,7 @@
               <tr id="{{ id }}">
                 <td>{{ username }}</td>
                 <td>{{ name }}</td>
+                <td>{{ type }}</td>
                 <td>{{ phone }}</td>
                 <td>{{ email }}</td>
               </tr>
@@ -86,8 +88,8 @@
                 <label for="price" data-error="Invalid Field"></label>                
               </div>
               <div class="input-field col s12">
-                <button class="btn orange waves-effect waves-light">Update</button>
-                <button class="btn red waves-effect waves-light">Delete</button>
+                <button class="btn orange waves-effect waves-light" ng-click="updatePost(editStateItem)">Update</button>
+                <button class="btn red waves-effect waves-light" ng-click="deletePost(editStateItem.id)">Delete</button>
               </div>
             </div>
           </form>

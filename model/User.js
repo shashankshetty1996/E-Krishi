@@ -47,7 +47,7 @@ module.exports.loginByUsername = (username, password, callback) => {
 };
 
 module.exports.getUsername = (username, callback) => {
-  let sql = `SELECT name FROM user WHERE username = ${mysql.escape(username)}`;
+  let sql = `SELECT id, name, phone, email FROM user WHERE username = ${mysql.escape(username)}`;
   try {
     global.con.query(sql, callback);
   } catch (error) {

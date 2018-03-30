@@ -6,7 +6,7 @@
 
 #google_translate_element {
   position: fixed;
-  top: 75px;
+  top: 100px;
   right: 15%;
   z-index: 999;
 }
@@ -14,9 +14,6 @@
 #login, #register {
   min-width: 100vw;
   min-height: 100vh;
-  /* display: flex;
-  align-items: center;
-  justify-content: flex-end; */
 }
 
 #login-page {
@@ -110,6 +107,20 @@
   margin: 2em auto;
 }
 
+.w-100 {
+  width: 100% !important;
+}
+
+.material-icons.md-24 {
+  font-size: 24px;
+  cursor: pointer;
+  transform: rotate(45deg);
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
 #news .banner {
   position: relative;
   display: flex;
@@ -120,6 +131,10 @@
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+}
+
+#newsDetails {
+  margin-bottom: 5em;
 }
 
 .preloader-wrapper {
@@ -150,7 +165,11 @@
 .news-card .card-action {
   position: absolute;
   width: 100%;
-  top: 490px;
+  top: 500px;
+}
+
+.forum-wrapper {
+  padding-top: 2em;
 }
 
 @media(min-width: 600) {

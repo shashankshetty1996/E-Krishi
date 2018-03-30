@@ -1,5 +1,98 @@
 <section id="newsDetails">
   <div class="container">
-    <h1>{{ username }}</h1>
+    <!-- Personal Info -->
+    <div class="card horizontal z-depth-2">
+      <div class="card-stacked row">
+        <div class="card-content col s12">
+          <h3 class="teal-text darken-1">{{ msg }}</h3>
+          <table class="highlighted centered responsive-table">
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Name</th>
+                <th>Phone</td>
+                <th>Email ID</t>
+              </tr>
+            </thead>
+            <tbody>
+              <tr id="{{ id }}">
+                <td>{{ username }}</td>
+                <td>{{ name }}</td>
+                <td>{{ phone }}</td>
+                <td>{{ email }}</td>
+              </tr>
+            </tbody>
+          </table>  
+        </div>
+        <div class="card-action right-align">
+          <button class="btn waves-effect waves-light" ng-click="displayPost()">{{ displayMsg }}</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Post form -->
+    <div class="card z-depth-2" ng-show="display">
+      <div class="card-content">
+        <h3 class="teal-text darken-1">Enter your commodity</h3>
+        <form name="addPost" class="row" ng-submit="addPost()">
+          <div class="input-field col m3 s12">
+            <input type="text" class="validate" name="commodity" ng-model="commodity" required>
+            <label for="commodity" data-error="Invalid Field">Commodity Name</label>
+          </div>
+          <div class="input-field col m6 s12">
+            <input type="text" class="validate" name="desc" ng-model="desc" required>
+            <label for="desc" data-error="Invalid Field">Add your Description Here</label>
+          </div>
+          <div class="input-field col m3 s12">
+            <input type="text" class="validate" name="price" ng-model="price" required>
+            <label for="price" data-error="Invalid Field">Price</label>
+          </div>
+          <div class="input-field col s12">
+            <button type="submit" class="btn btn-large waves-effect waves-light w-100">
+              <span ng-bind="submitMsg"></span>
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Post -->
+    <ul class="collection" ng-repeat="commodity in commodityList">
+      <li class="collection-item">
+        <strong class="text-capitalize">{{ commodity.name }} </strong>
+        <span>({{ commodity.price }}) : </span>
+        <span>{{ commodity.desc }}</span>
+        <span class="secondary-content" ng-click="editItem(commodity)">
+          <i class="material-icons md-24">swap_vert</i>
+        </span>
+        <!-- Drop Menu -->
+        <div class="col s12 my-2" name="commodity-{{ commodity.id }}" ng-show="editState && editStateItem.id === {{ commodity.id }}">
+          <span><strong>{{ commodity.name }} : </strong> {{ commodity.desc }}</span>
+          <span class="right"><strong>Price : </strong> {{ commodity.price }}</span>
+          <form>
+            <div class="row">
+              <div class="input-field col s12 m3">
+                <input type="text" class="validate" name="name" ng-model="editStateItem.name" placeholder="Enter Commodity Name" required>
+                <label for="name" data-error="Invalid Field"></label>
+              </div>
+              <div class="input-field col s12 m6">
+                <input type="text" class="validate" name="desc" ng-model="editStateItem.desc" placeholder="Enter Commodity Details" required>
+                <label for="desc" data-error="Invalid Field"></label>
+              </div>
+              <div class="input-field col s12 m3">
+                <input type="text" class="validate" name="price" ng-model="editStateItem.price"
+                placeholder="Enter Commodity Price" required>
+                <label for="price" data-error="Invalid Field"></label>                
+              </div>
+              <div class="input-field col s12">
+                <button class="btn orange waves-effect waves-light">Update</button>
+                <button class="btn red waves-effect waves-light">Delete</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </li>
+    </ul>
   </div>
 </section>

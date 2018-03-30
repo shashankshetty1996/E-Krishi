@@ -65,7 +65,7 @@ router.get('/types', (req, res) => {
 });
 
 // Check the username
-router.get('/:username', (req, res) => {
+router.get('/username/:username', (req, res) => {
     let username = req.params.username;
 
     User.getUsername(username, (err, result) => {
@@ -74,7 +74,11 @@ router.get('/:username', (req, res) => {
         } else if(result.length === 0) {
             res.send(`username not found`);
         } else {
-            res.send(result[0].name);
+            // removing email option if not given by the user
+            if(result[0].email === "dummy@gmail.com") {
+                delete result[0].email;
+            }
+            res.send(result[0]);
         }
     });
 });

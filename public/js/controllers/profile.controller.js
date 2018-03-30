@@ -2,8 +2,8 @@ angular
   .module('myApp')
   .controller('profileController', profileController);
 
-profileController.$inject = ['$scope', '$rootScope', '$timeout', '$location', 'UserService'];
-function profileController($scope, $rootScope, $timeout, $location, UserService) {
+profileController.$inject = ['$scope', '$rootScope', '$timeout', '$location', 'PostService'];
+function profileController($scope, $rootScope, $timeout, $location, PostService) {
   $scope.msg = "Personal Info";
   // Post form submit button value
   $scope.submitMsg = "Add Commodity";
@@ -18,14 +18,16 @@ function profileController($scope, $rootScope, $timeout, $location, UserService)
   $scope.editState = false;
   $scope.editStateItem;
 
+  $scope.commodityList =[];
+
   // commodity list dummy
-  $scope.commodityList = [
-    {id: 1, name: 'rice', desc: 'I have one ton', price: 'Rs. 30/KG'},
-    {id: 2, name: 'wheat', desc: 'I have half a ton', price: 'Rs. 25/KG'}
-  ];
+  // $scope.commodityList = [
+  //   {id: 1, name: 'rice', desc: 'I have one ton', price: 'Rs. 30/KG'},
+  //   {id: 2, name: 'wheat', desc: 'I have half a ton', price: 'Rs. 25/KG'}
+  // ];
 
   // Get Details by username
-  UserService.GetByUsername($scope.username)
+  PostService.GetByUsername($scope.username)
     .then(function(user) {
       // Invalid user if any changes happens in the username then
       if(user === "username not found") {
@@ -42,10 +44,45 @@ function profileController($scope, $rootScope, $timeout, $location, UserService)
       }
     });
 
+  // Add post
+  $scope.addPost = function() {
+    // get details
+    let username = $scope.username;
+    let name = $scope.commodity;
+    let description = $scope.description;
+    let price = $scope.price;
+
+    PostService.AddPost(username, name, description, price)
+      .then(function(post) {
+        if(post === "invalid") {
+          let toastContent = '<span class="flow-text">Error in Adding post</span>';  
+          Materialize.toast(toastContent, 3000);
+        } else {
+          let toastContent = '<span class="flow-text">Added Post successful</span>';  
+          Materialize.toast(toastContent, 3000);
+          // console.log(post);
+          // $scope.commodityList.push(post);
+        }
+      });
+  }
+
+  // Getting all the post from database
+  PostService.GetPostByUsername($scope.username)
+    .then(function(post) {
+      // checking if post is present or not
+      if(post === "invalid") {
+        let toastContent = '<span class="flow-text">No Post found</span>';  
+        Materialize.toast(toastContent, 3000);
+      } else {
+        $scope.commodityList = post;
+      }
+    });
+
   // Toggle display form
   $scope.displayPost = function() {
     $scope.display = !$scope.display;
 
+    // Toggle messages
     if($scope.display) {
       $scope.displayMsg = "Close Post";
     } else {
@@ -63,6 +100,5 @@ function profileController($scope, $rootScope, $timeout, $location, UserService)
     }
     // Store the item
     $scope.editStateItem = commodity;
-    console.log($scope.editStateItem);
   }
 }

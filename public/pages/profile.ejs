@@ -34,14 +34,14 @@
     <div class="card z-depth-2" ng-show="display">
       <div class="card-content">
         <h3 class="teal-text darken-1">Enter your commodity</h3>
-        <form name="addPost" class="row" ng-submit="addPost()">
+        <form name="AddPost" class="row" ng-submit="addPost()">
           <div class="input-field col m3 s12">
             <input type="text" class="validate" name="commodity" ng-model="commodity" required>
             <label for="commodity" data-error="Invalid Field">Commodity Name</label>
           </div>
           <div class="input-field col m6 s12">
-            <input type="text" class="validate" name="desc" ng-model="desc" required>
-            <label for="desc" data-error="Invalid Field">Add your Description Here</label>
+            <input type="text" class="validate" name="description" ng-model="description" required>
+            <label for="description" data-error="Invalid Field">Add your Description Here</label>
           </div>
           <div class="input-field col m3 s12">
             <input type="text" class="validate" name="price" ng-model="price" required>
@@ -62,13 +62,13 @@
       <li class="collection-item">
         <strong class="text-capitalize">{{ commodity.name }} </strong>
         <span>({{ commodity.price }}) : </span>
-        <span>{{ commodity.desc }}</span>
+        <span>{{ commodity.description }}</span>
         <span class="secondary-content" ng-click="editItem(commodity)">
           <i class="material-icons md-24">swap_vert</i>
         </span>
         <!-- Drop Menu -->
         <div class="col s12 my-2" name="commodity-{{ commodity.id }}" ng-show="editState && editStateItem.id === {{ commodity.id }}">
-          <span><strong>{{ commodity.name }} : </strong> {{ commodity.desc }}</span>
+          <span><strong>{{ commodity.name }} : </strong> {{ commodity.description }}</span>
           <span class="right"><strong>Price : </strong> {{ commodity.price }}</span>
           <form>
             <div class="row">
@@ -77,8 +77,8 @@
                 <label for="name" data-error="Invalid Field"></label>
               </div>
               <div class="input-field col s12 m6">
-                <input type="text" class="validate" name="desc" ng-model="editStateItem.desc" placeholder="Enter Commodity Details" required>
-                <label for="desc" data-error="Invalid Field"></label>
+                <input type="text" class="validate" name="description" ng-model="editStateItem.description" placeholder="Enter Commodity Details" required>
+                <label for="description" data-error="Invalid Field"></label>
               </div>
               <div class="input-field col s12 m3">
                 <input type="text" class="validate" name="price" ng-model="editStateItem.price"

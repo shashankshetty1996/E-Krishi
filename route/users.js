@@ -6,6 +6,7 @@ let router = express.Router();
 // Models
 const User = require('../model/User');
 const Type = require('../model/Type');
+const Post = require('../model/Post');
 
 // Create User
 router.post('/create', (req, res) => {
@@ -83,6 +84,46 @@ router.get('/username/:username', (req, res) => {
     });
 });
 
+// Add Post
+router.post('/post', verifyToken, (req, res) => {
+    console.log('hello');
+    jwt.verify(req.token, 'shashank', (err, AuthData) => {
+        if(err) {
+            res.sendStatus(403);
+        }
+        let data = req.body;
+        Post.AddPost(data, (err, result) => {
+            if(err) {
+                res.sendStatus(403);
+            }
+            if(result.affectedRows === 0) {
+                res.send('invalid');
+            } else {
+                res.send(result);
+            }
+        });
+    });
+});
+
+// Get post by username
+router.get('/post/:username', verifyToken, (req, res) => {
+    jwt.verify(req.token, 'shashank', (err, AuthData) => {
+        if(err) {
+            res.sendStatus(403);
+        }
+        let username = req.params.username;
+        Post.GetUserPost(username, (err, result) => {
+            if(err) {
+                res.sendStatus(403);
+            }
+            if(result.length !== 0) {
+                res.send(result);
+            } else {
+                res.send('invalid');
+            }
+        });
+    });
+});
 
 function verifyToken(req, res, next) {
     // Get auth header value

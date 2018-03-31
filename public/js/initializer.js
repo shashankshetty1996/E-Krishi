@@ -7,6 +7,9 @@ $(document).ready(function() {
     closeOnClick: true
   });
 
+  // Feature Discovery
+  $('.tap-target').tapTarget('open');
+
   // tooltip
   $('.tooltipped').tooltip();
 

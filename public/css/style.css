@@ -172,6 +172,11 @@
   padding-top: 2em;
 }
 
+.tap-target-content {
+  top: 20px !important;
+  left: 45px !important;
+}
+
 @media(min-width: 600) {
   .news-card img {
     height: 600px;

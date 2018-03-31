@@ -33,6 +33,12 @@ function homeController($scope) {
     }
   ];
 
+  // feature discovery
+  function init() {
+    // Feature Discovery
+    $('.tap-target').tapTarget('open');
+  }
+  init();
 
   // IoT Section
   $scope.connected = true;

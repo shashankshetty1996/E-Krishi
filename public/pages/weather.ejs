@@ -5,22 +5,38 @@
       <div class="indeterminate"></div>
     </div>
   </div>
-  <div class="container">    
-    <h1 class="center-align">{{ msg }}</h1>
-    <div class="row">
-      <div class="card col s12 p-2 teal darken-1 white-text z-depth-2" ng-repeat="forecast in forecasts">
-        <div class="card-title">
-          <h4 class="center">{{ forecast.day }} {{ forecast.date | reverse }} in {{ city }} {{ region_name }}, {{ country_name }}</h4>
-        </div>
+  <div class="container"> 
+    <h1 class="teal-text darken-2">{{msg}}</h1>
+
+    <div class="card" ng-repeat="forecast in forecastList" ng-class="{'horizontal': {{ hImage }} == true}">
+      <div class="card-image valign-wrapper">
+        <img ng-src="{{ forecast.day.condition.icon }}" alt="Icon not Loaded">
+      </div>
+      <div class="card-stacked">
         <div class="card-content">
-          <div class="row">
-            <div class="col s12 m6">
-              <p class="center-align flow-text"><strong>High Temperature : </strong> {{ forecast.high }} &deg;C <br /> <strong>Low Temperature : </strong> {{ forecast.low }} &deg;C</p>
-            </div>
-            <div class="col s12 m6">
-              <p class="center-align flow-text"><strong>Type of Day:</strong> {{ forecast.skytextday }}</p>
-            </div>
-          </div>
+          <h5 class="teal-text darken-2">On <strong>{{ forecast.date | reverse }}</strong> climate is <strong>{{ forecast.day.condition.text }}</strong></h5>
+          <table class="responsive-table">
+            <thead>
+              <tr>
+                <th>Maximum Temperature</td>
+                <th>Minimum Temperature</td>
+                <th>Average Temperature</td>
+                <th>Average Humidity</td>
+                <th>Maximum Wind Speed</th>
+                <th>UV Radiation</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>{{ forecast.day.maxtemp_c }}</td>
+                <td>{{ forecast.day.mintemp_c }}</td>
+                <td>{{ forecast.day.avgtemp_c }}</td>
+                <td>{{ forecast.day.avghumidity }}</td>
+                <td>{{ forecast.day.maxwind_kph }}</td>
+                <td>{{ forecast.day.uv }}</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

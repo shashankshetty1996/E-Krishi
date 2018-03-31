@@ -4,34 +4,49 @@ angular
   .filter("reverse", function() {
     return function(input) {
       input = input.split('-');  // split based in '-'
-      return result = input[2] + '-' + input[1] + '-' + input[0];
+      return input[2] + '-' + input[1] + '-' + input[0];
     };
   });
 
-weatherController.$inject = ['$scope', 'WeatherService'];
-function weatherController($scope, WeatherService) {
+weatherController.$inject = ['$scope','$window', 'WeatherService'];
+function weatherController($scope, $window, WeatherService) {
   $scope.msg = 'Weather Forecast';
-  $scope.preloader = true;  
-
+  $scope.preloader = true; 
+  
   WeatherService.GetAll()
     .then(function(response) {
-      console.log(response);
       if(response.length !== 0) {
         $scope.zipcode = response.zip_code;
+        $scope.latitude = response.latitude;
+        $scope.longitude = response.longitude;
         $scope.city = response.city;
         $scope.region_name = response.region_name;
         $scope.country_name = response.country_name;
 
-        // GetWeather
-        WeatherService.GetWeather($scope.zipcode)
+        WeatherService.GetWeatherApi($scope.latitude, $scope.longitude)
           .then(function(response) {
             // To stop the pre loader
             $scope.preloader = false;
-            console.log(response);
 
             // To store the details
-            $scope.forecasts = response.forecast;
+            $scope.forecastList = response.forecast.forecastday;
+
+            $scope.cardStyle();
           });
       } 
+    });
+
+    // card size 
+    $scope.cardStyle = function() {
+      if($window.innerWidth < '690') {
+        $scope.hImage = false;
+      } else {
+        $scope.hImage = true;
+      }
+    }
+
+    // on resize call this function
+    angular.element($window).on('resize', function() {
+      $scope.cardStyle();
     });
 }

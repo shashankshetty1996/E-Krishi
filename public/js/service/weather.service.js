@@ -8,7 +8,7 @@
     var service = {};
 
     service.GetAll = GetAll;
-    service.GetWeather = GetWeather;
+    service.GetWeatherApi = GetWeatherApi;
 
     return service;
 
@@ -19,9 +19,11 @@
       return $http.jsonp(trustedUrl, {jsonpCallbackParam: 'callback'}).then(handleSuccess, handleError("Error getting weather conditions"));
     }
 
-    function GetWeather(zip) {
-      console.log(zip);
-      return $http.get(`/weather/${zip}`).then(handleSuccess, handleError('Error in Getting weather'));
+    function GetWeatherApi(latitude, longitude) {
+      let apikey = "b00ee39f471d4abf9f8143323183003";
+      let url = `http://api.apixu.com/v1/forecast.json?key=${apikey}&q=${latitude},${longitude}&days=10`;
+
+      return $http.get(url).then(handleSuccess, handleError("Error getting weather conditions"));
     }
 
     // private functions

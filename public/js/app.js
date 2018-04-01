@@ -22,6 +22,10 @@ app.config(function ($routeProvider) {
       templateUrl: 'pages/profile.ejs',
       controller: 'profileController'
     })
+    .when('/user/:username', {
+      templateUrl: 'pages/users.ejs',
+      controller: 'usersController'
+    })
     .when('/weather', {
       templateUrl: 'pages/weather.ejs',
       controller: 'weatherController'

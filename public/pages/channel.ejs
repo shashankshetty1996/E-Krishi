@@ -28,7 +28,7 @@
             <li ng-repeat="x in channelMessage">
               <!-- right-alignment for own user message -->
               <div ng-class="{'right-align' : x.username === username}">
-                <span class="chip">{{ x.username }} <br> {{ x.time }}</span>
+                <span class="chip"><a class="no-style-link" ng-href="#!user/{{ x.username }}">{{ x.username }}</a> <br> {{ x.time }}</span>
                 <span class="message-content">{{ x.message }}</span>
               </div>
             </li>            

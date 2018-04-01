@@ -111,9 +111,22 @@
   width: 100% !important;
 }
 
+.no-style-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .material-icons.md-24 {
   font-size: 24px;
   cursor: pointer;
+}
+
+.material-icons.md-36 {
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.rotate-45 {
   transform: rotate(45deg);
 }
 

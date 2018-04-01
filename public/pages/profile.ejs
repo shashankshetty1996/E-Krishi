@@ -66,7 +66,7 @@
         <span>({{ commodity.price }}) : </span>
         <span>{{ commodity.description }}</span>
         <span class="secondary-content" ng-click="editItem(commodity)">
-          <i class="material-icons md-24">swap_vert</i>
+          <i class="material-icons md-24 rotate-45">swap_vert</i>
         </span>
         <!-- Drop Menu -->
         <div class="col s12 my-2" name="commodity-{{ commodity.id }}" ng-show="editState && editStateItem.id === {{ commodity.id }}">

@@ -35,18 +35,4 @@ function weatherController($scope, $window, WeatherService) {
           });
       } 
     });
-
-    // card size 
-    $scope.cardStyle = function() {
-      if($window.innerWidth < '690') {
-        $scope.hImage = false;
-      } else {
-        $scope.hImage = true;
-      }
-    }
-
-    // on resize call this function
-    angular.element($window).on('resize', function() {
-      $scope.cardStyle();
-    });
 }

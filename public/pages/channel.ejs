@@ -2,8 +2,9 @@
   <div class="row">
     <div class="col l2 m12 s12 no-padding">
       <ul id="slide-out" class="side-nav fixed teal darken-2">
-        <li><h3 class="white-text center-align">Forum Channels</h3></li>        
-        <li ng-repeat="channel in channels" name="{{ channel.name }}" ng-class="{'active':'{{ channel.name }}' === '{{ currentChannel }}'}">
+        <li><h3 class="white-text center-align">Forum Channels</h3></li> 
+        <li><input type="text" class="channelSearch" placeholder="Search Channel" ng-model="channelFilter"></li>       
+        <li ng-repeat="channel in channels | filter : channelFilter" name="{{ channel.name }}" ng-class="{'active':'{{ channel.name }}' === '{{ currentChannel }}'}">
           <a ng-href="{{ channel.link }}" class="white-text"># {{ channel.name }}</a>
         </li>
       </ul>

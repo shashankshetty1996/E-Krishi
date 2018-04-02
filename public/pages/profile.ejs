@@ -1,8 +1,8 @@
 <section id="newsDetails">
-  <div class="container">
+  <div class="container-fluid">
     <!-- Personal Info -->
-    <div class="card horizontal z-depth-2">
-      <div class="card-stacked row">
+    <div class="card horizontal hoverable">
+      <div class="card-stacked row center-align">
         <div class="card-content col s12">
           <h3 class="teal-text darken-1">{{ msg }}</h3>
           <table class="highlighted responsive-table">
@@ -33,7 +33,7 @@
     </div>
 
     <!-- Post form -->
-    <div class="card z-depth-2" ng-show="display">
+    <div class="card hoverable" ng-show="display">
       <div class="card-content">
         <h3 class="teal-text darken-1">Enter your commodity</h3>
         <form name="AddPost" class="row" ng-submit="addPost()">
@@ -60,7 +60,7 @@
     </div>
 
     <!-- Post -->
-    <ul class="collection" ng-repeat="commodity in commodityList">
+    <ul class="collection hoverable" ng-repeat="commodity in commodityList">
       <li class="collection-item">
         <strong class="text-capitalize">{{ commodity.name }} </strong>
         <span>({{ commodity.price }}) : </span>

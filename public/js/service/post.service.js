@@ -12,6 +12,8 @@
     service.AddPost = AddPost;
     service.UpdatePost = UpdatePost;
     service.DeletePost = DeletePost;
+    service.GetChat = GetChat;
+    service.AddChat = AddChat;
 
     return service;
 
@@ -33,6 +35,16 @@
 
     function DeletePost(id) {
       return $http.delete('/users/post/' + id).then(handleSuccess, handleError('Error deleting post'));
+    }
+
+    function GetChat(sender, receiver) {
+      let url = `/chat/sender=${sender}&receiver=${receiver}`;
+      console.log(url);
+      return $http.get(url).then(handleSuccess, handleError('Error Getting chat'));
+    }
+
+    function AddChat(data) {
+      return $http.post('/chat/', data).then(handleSuccess, handleError('Error Adding chat message'));
     }
 
     // private functions

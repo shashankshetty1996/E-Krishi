@@ -4,16 +4,15 @@ angular
 
 usersController.$inject = ['$scope', '$rootScope', '$routeParams', '$location', 'PostService'];
 function usersController($scope, $rootScope, $routeParams, $location, PostService) {
+  // Can't view his own profile
+  if($routeParams.username === $rootScope.globals.currentUser.username) {
+    $location.path('/profile');
+  }
+
   // Username
   $scope.username = $routeParams.username;
 
-  // Type of user
-  $scope.type = $rootScope.globals.currentUser.type;  
-
   $scope.info = `About ${$scope.username}`;
-
-  // Initialization of commodity list
-  $scope,commodityList = [];
 
   // Initialize chat status to false by default
   $scope.ChatStatus = false;
@@ -25,9 +24,7 @@ function usersController($scope, $rootScope, $routeParams, $location, PostServic
       if(user === "username not found") {
         let toastContent = '<span class="flow-text">Invalid User</span>';  
         Materialize.toast(toastContent, 3000);
-        $timeout(function() {
-          $location.path('/');
-        }, 3000);
+        $location.path('/profile');
       } else {
         // Personal Info
         $scope.id = user.id;
@@ -77,11 +74,34 @@ function usersController($scope, $rootScope, $routeParams, $location, PostServic
 
   // Initialization of channel list
   $scope.channelMessage = [];
+
+  // Display chat
+  PostService.GetChat($rootScope.globals.currentUser.username, $routeParams.username)
+    .then(function(response) {
+      console.log(response);
+      $scope.channelMessage = response;
+    })
   
   // Initial days array
   let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];  
 
-  // Get the timestamp
-  let timenow = new Date();
-  timenow = `${timenow.getDate()}-${timenow.getMonth()}-${timenow.getFullYear()} ${days[timenow.getDay()]}`;
+  // Adding Chat to database
+  $scope.addChat = function() {
+    // Get the timestamp
+    let timenow = new Date();
+    timenow = `${timenow.getDate()}-${timenow.getMonth()}-${timenow.getFullYear()} ${days[timenow.getDay()]}`;
+
+    let data = {
+      sender: $rootScope.globals.currentUser.username,
+      receiver: $routeParams.username,
+      message: $scope.msg,
+      time: timenow
+    };
+
+    PostService.AddChat(data)
+      .then(function(response) {
+        let toastContent = `<span class="flow-text">${response}</span>`;  
+        Materialize.toast(toastContent, 5000);
+      });
+  }
 }

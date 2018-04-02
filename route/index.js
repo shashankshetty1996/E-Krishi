@@ -5,6 +5,7 @@ const NewsAPI = require('newsapi');
 const newsapi = new NewsAPI('16c103b7c34a4c0aa1ff3cbd0753fab6');
 
 let Forum = require('../model/Forum');
+let Chat = require('../model/Chat');
 
 let router = express.Router();
 
@@ -38,6 +39,41 @@ router.post('/channel/', verifyToken, (req, res) => {
         res.sendStatus(403);
       }
       res.send("message sent");      
+    });
+  });
+});
+
+router.get('/chat/sender=:sender&receiver=:receiver', verifyToken, (req, res) => {
+  jwt.verify(req.token, 'shashank', (err, AuthData) => {
+    if(err) {
+      res.sendStatus(403);
+    }
+    let sender = req.params.sender;
+    let receiver = req.params.receiver;
+
+    Chat.GetChat(sender, receiver, (err, result) => {
+      if(err) {
+        res.sendStatus(403);
+      } else {
+        res.send(result);
+      }
+    });
+  });
+});
+
+router.post('/chat/', verifyToken, (req, res) => {
+  jwt.verify(req.token, 'shashank', (err, AuthData) => {
+    if(err) {
+      res.sendStatus(403);
+    }
+    let data = req.body;
+    console.log(data);
+    Chat.AddChat(data, (err, result) => {
+      if(err) {
+        res.sendStatus(403);
+      } else {
+        res.send('message sent');
+      }
     });
   });
 });
@@ -85,6 +121,7 @@ router.get('/news', verifyToken, (req, res) => {
     });
   });
 });
+
 
 function verifyToken(req, res, next) {
   // Get auth header value

@@ -42,6 +42,13 @@
   text-align: justify;
 }
 
+.container-fluid {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto
+}
+
 .messages-block {
   padding: 1em 1.5em; 
   background-color: rgba(200, 200, 200, 0.2);

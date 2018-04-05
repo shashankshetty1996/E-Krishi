@@ -30,8 +30,6 @@ function weatherController($scope, $window, WeatherService) {
 
             // To store the details
             $scope.forecastList = response.forecast.forecastday;
-
-            $scope.cardStyle();
           });
       } 
     });

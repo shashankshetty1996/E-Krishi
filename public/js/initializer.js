@@ -7,6 +7,9 @@ $(document).ready(function() {
     closeOnClick: true
   });
 
+  // Model
+  $('.modal').modal();
+  
   // tooltip
   $('.tooltipped').tooltip();
 

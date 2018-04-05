@@ -1,6 +1,7 @@
 let app = angular.module("myApp", ['ngRoute']);
 
-app.config(function ($routeProvider) {
+app.config(function ($routeProvider, $httpProvider) {
+  $httpProvider.defaults.headers.common['Access-Control-Allow-Headers'] = '*';
   $routeProvider
     .when('/', {
       templateUrl: 'pages/home.ejs',

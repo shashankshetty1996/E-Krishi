@@ -42,7 +42,7 @@
             <ul>
               <li ng-repeat="x in channelMessage">
                 <!-- right-alignment for own user message -->
-                <div ng-class="{'right-align' : x.sender !== username || x.receiver !== username}">
+                <div ng-class="{'right-align' : x.receiver  === username }">
                   <span class="chip">{{ x.sender }} <br> {{ x.time }}</span>
                   <span class="message-content">{{ x.message }}</span>
                 </div>

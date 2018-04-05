@@ -2,8 +2,8 @@ angular
   .module('myApp')
   .controller('profileController', profileController);
 
-profileController.$inject = ['$scope', '$rootScope', '$timeout', '$location', 'PostService'];
-function profileController($scope, $rootScope, $timeout, $location, PostService) {
+profileController.$inject = ['$scope', '$rootScope', '$timeout', '$location', '$window', 'PostService'];
+function profileController($scope, $rootScope, $timeout, $location, $window, PostService) {
   $scope.msg = "Personal Info";
   // Post form submit button value
   $scope.submitMsg = "Add Commodity";
@@ -13,7 +13,11 @@ function profileController($scope, $rootScope, $timeout, $location, PostService)
 
   // display form
   $scope.display = false;
-  $scope.displayMsg = "Add Post"
+  $scope.displayMsg = "Add Post";
+
+  // message block
+  $scope.messageFlag = false;
+  $scope.message = "Show Message";
 
   // edit item presets
   $scope.editState = false;
@@ -91,6 +95,24 @@ function profileController($scope, $rootScope, $timeout, $location, PostService)
   // implicit call
   $scope.GetPostByUsername();
 
+  // Search the user by username
+  $scope.GotoProfile = function() {
+    let username = $scope.search;
+
+    PostService.GetByUsername(username)
+      .then(function(user) {
+        // Invalid user if any changes happens in the username then
+        if(user === "username not found") {
+          let toastContent = '<span class="flow-text">Invalid User</span>';  
+          Materialize.toast(toastContent, 3000);
+        } else {
+          // Redirect to the user's profile
+          let path = `user/${username}`;
+          $location.path(path);
+        }
+      });
+  }
+
   // Toggle display form
   $scope.displayPost = function() {
     $scope.display = !$scope.display;
@@ -101,6 +123,82 @@ function profileController($scope, $rootScope, $timeout, $location, PostService)
     } else {
       $scope.displayMsg = "Add Post";
     }
+  }
+
+  // Get all the messages
+  $scope.getMessage = function() {
+    // To display the message block
+    $scope.messageFlag = !$scope.messageFlag;
+    
+    // Toggle messages
+    if($scope.messageFlag) {
+      $scope.message = "close Message";
+      PostService.GetMessageByReceiver($scope.username)
+        .then(function(response) {
+          if(response == "blank") {
+            let toastContent = '<span class="flow-text">No Message</span>';  
+            Materialize.toast(toastContent, 3000);
+          } else {
+            console.log(response);
+            $scope.MessageList = response;
+          }
+        });
+    } else {
+      $scope.message = "show Message";
+    }
+  }
+
+  $scope.ChatMsg = "You got messages";
+
+  $scope.replyStatus = false;
+
+  // Reply for message
+  $scope.replySender = 'message';
+  $scope.replyMessageTo = 'sender';
+  $scope.replyMessage = function(reply) {
+    // enable reply forum
+    $scope.replyStatus = true;
+
+    // Extracting the data from message
+    $scope.replyMessage = reply.message;
+    $scope.replyMessageTo = reply.sender;
+
+    // focus on field
+    document.replyForum.replyText.focus();
+  }
+
+  // Initial days array
+  let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+
+  // sending reply
+  $scope.ChatReply = function() {
+    // Getting the reply
+    let reply = $scope.replyText;
+
+    // max length
+    if(reply.length >= 200) {
+      let toastContent = `<span class="flow-text">Maximum 200 character</span>`;  
+      Materialize.toast(toastContent, 3000);
+    }
+
+    // hiding reply forum
+    $scope.replyStatus = false;
+
+    let timenow = new Date();
+    timenow = `${timenow.getDate()}-${timenow.getMonth()}-${timenow.getFullYear()} ${days[timenow.getDay()]}`;
+
+    let data = {
+      sender: $scope.username,
+      receiver: $scope.replyMessageTo,
+      message: reply,
+      time: timenow
+    };
+
+    PostService.AddChat(data)
+      .then(function(response) {
+        let toastContent = `<span class="flow-text">${response}</span>`;  
+        Materialize.toast(toastContent, 5000);
+      });
   }
 
   // Edit State

@@ -26,9 +26,58 @@
             </tbody>
           </table>  
         </div>
-        <div class="card-action right-align">
-          <button class="btn waves-effect waves-light" ng-click="displayPost()">{{ displayMsg }}</button>
+        <div class="card-action">
+          <form>
+            <div class="row valign-wrapper">
+              <div class="input-field col s9">
+                <input type="text" class="validate" name="search" ng-model="search" required>
+                <label for="search" data-error="Invalid username">Search user by username</label>
+              </div>
+              <button class="btn waves-effect waves-light col s3" type="submit" ng-click="GotoProfile()">search</button>
+            </div>
+          </form>
+          <div class="row">
+            <div class="right-align">
+              <button class="btn blue darken-2 waves-effect waves-light" ng-click="getMessage()">{{ message }}</button>
+              <button class="btn waves-effect waves-light" ng-click="displayPost()">{{ displayMsg }}</button>
+            </div>
+          </div>
         </div>
+      </div>
+    </div>
+
+    <!-- message -->
+    <div class="card hoverable" ng-show="messageFlag">
+      <div class="card-content">
+        <form class="row valign-wrapper" name="replyForum" ng-show="replyStatus" ng-submit="ChatReply()">
+          <div class="input-field col s11">
+            <input type="text" name="replyText" id="replyText" ng-model="replyText" class="validate" required>
+            <label for="reply" data-error="Invalid Reply">Reply for {{ replyMessage }}</label>
+          </div>
+          <div class="col s1">
+            <button type="submit" class="btn waves-effect waves-light">
+              <i class="material-icons">send</i>
+            </button>
+          </div>
+        </form>
+        <table class="bordered highlight responsive-table">
+          <thead>
+            <tr>
+              <th>SI. No</th>
+              <th>From</th>
+              <th>Message</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="message in MessageList">
+              <td>{{ $index+1 }}</td>
+              <td>{{ message.sender }}</td>
+              <td>{{ message.message }}</td>
+              <td><button class="btn waves-effect waves-light blue darken-2" data-target="replyMsg" ng-click="replyMessage(message)">reply</button></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
 

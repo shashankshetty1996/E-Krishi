@@ -45,12 +45,12 @@ function homeController($scope) {
 
   // result init
   $scope.result = [
-    { type: 'Temperature', val: 0, image: 'img/thermometer.png' },
-    { type: 'Moisture of soil', val: 0, image: 'img/moisture.png' },
-    { type: 'Humidity', val: 0, image: 'img/humidity.png' },
-    { type: 'Oxygen', val: 0, image: 'img/oxygen.png' },
-    { type: 'Nitrogen', val: 0, image: 'img/nitrogen.png' },
-    { type: 'Sunlight intensity', val: 0, image: 'img/intensity.png' },
-    { type: 'Toxicity level of atmosphere', val: 0, image: 'img/toxicity.png' }
+    { type: 'Temperature', val: 35, image: 'img/thermometer.png' },
+    { type: 'Moisture of soil', val: 4, image: 'img/moisture.png' },
+    { type: 'Humidity', val: 73, image: 'img/humidity.png' },
+    { type: 'Oxygen', val: 27, image: 'img/oxygen.png' },
+    { type: 'Nitrogen', val: 53, image: 'img/nitrogen.png' },
+    { type: 'Sunlight intensity', val: 13.5, image: 'img/intensity.png' },
+    { type: 'Toxicity level of atmosphere', val: 2, image: 'img/toxicity.png' }
   ]
 }

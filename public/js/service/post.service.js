@@ -14,6 +14,7 @@
     service.DeletePost = DeletePost;
     service.GetChat = GetChat;
     service.AddChat = AddChat;
+    service.GetMessageByReceiver = GetMessageByReceiver;
 
     return service;
 
@@ -39,12 +40,16 @@
 
     function GetChat(sender, receiver) {
       let url = `/chat/sender=${sender}&receiver=${receiver}`;
-      console.log(url);
       return $http.get(url).then(handleSuccess, handleError('Error Getting chat'));
     }
 
     function AddChat(data) {
       return $http.post('/chat/', data).then(handleSuccess, handleError('Error Adding chat message'));
+    }
+
+    function GetMessageByReceiver(receiver) {
+      let url = `/chat/receiver=${receiver}`;
+      return $http.get(url).then(handleSuccess, handleError('Error Getting chat'));
     }
 
     // private functions

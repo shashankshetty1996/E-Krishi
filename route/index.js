@@ -67,7 +67,6 @@ router.post('/chat/', verifyToken, (req, res) => {
       res.sendStatus(403);
     }
     let data = req.body;
-    console.log(data);
     Chat.AddChat(data, (err, result) => {
       if(err) {
         res.sendStatus(403);
@@ -77,6 +76,27 @@ router.post('/chat/', verifyToken, (req, res) => {
     });
   });
 });
+
+router.get('/chat/receiver=:receiver', verifyToken, (req, res) => {
+  jwt.verify(req.token, 'shashank', (err, AuthData) => {
+    if(err) {
+      res.sendStatus(403);
+    }
+    let receiver = req.params.receiver;
+
+    Chat.GetMessageByReceiver(receiver, (err, result) => {
+      if(err) {
+        res.sendStatus(403);
+      }
+      if(result.length === 0) {
+        res.send('blank');
+      } else {
+        res.send(result);
+      }
+    });
+  });
+});
+
 
 router.get('/weather/:zipcode', verifyToken, (req, res) => {
   jwt.verify(req.token, 'shashank', (err, AuthData) => {

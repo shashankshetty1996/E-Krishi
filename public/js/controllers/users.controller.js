@@ -2,8 +2,8 @@ angular
   .module('myApp')
   .controller('usersController', usersController);
 
-usersController.$inject = ['$scope', '$rootScope', '$routeParams', '$location', 'PostService'];
-function usersController($scope, $rootScope, $routeParams, $location, PostService) {
+usersController.$inject = ['$scope', '$rootScope', '$routeParams', '$location', '$interval','PostService'];
+function usersController($scope, $rootScope, $routeParams, $location, $interval, PostService) {
   // Can't view his own profile
   if($routeParams.username === $rootScope.globals.currentUser.username) {
     $location.path('/profile');
@@ -76,11 +76,18 @@ function usersController($scope, $rootScope, $routeParams, $location, PostServic
   $scope.channelMessage = [];
 
   // Display chat
-  PostService.GetChat($rootScope.globals.currentUser.username, $routeParams.username)
-    .then(function(response) {
-      console.log(response);
-      $scope.channelMessage = response;
-    })
+  let promise;
+  promise = $interval(function() {
+    PostService.GetChat($rootScope.globals.currentUser.username, $routeParams.username)
+      .then(function(response) {
+        $scope.channelMessage = response;
+      });
+  }, 1000);
+
+  // to stop the interval when changed the route i.e interval will be keep running
+  $scope.$on('$destroy', function() {
+    $interval.cancel(promise);
+  });
   
   // Initial days array
   let days = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];  
